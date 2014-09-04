@@ -1,0 +1,194 @@
+/*
+PROGRAM FILE NAME	: DESIGN.CPP
+PROGRAM NAME   		:
+PROGRAM DISCRIPTION	: CODE FOR USER INTERFACE DESIGN
+			  PROGESS BAR DESIGN,
+			  SCREEN SINGLE LINE BORDER,
+			  SCREEN DOUBLE LINE BORDER
+PROGRAM AUTHOR 		: Ashwin M. Hegde
+PROGRAM LICENSE		: General Public License
+PROGRAM WEBSITE		: http://www.globalcodes.net
+PROGRAM EMAIL		: webmaster@globalcodes.net
+Copyright(C) 2010; Globalcodes.(R)
+All Right Reserved.
+*/
+
+#include <iostream.h>
+#include <iomanip.h>
+#include <conio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+#include <graphics.h>
+#include <dos.h>
+#include <process.h>
+#include <time.h>
+
+/* request auto detection */
+int gdriver = DETECT, gmode, errorcode;
+int midx, midy,bkcol=10;
+int left, top, right, bottom, xmax, ymax;
+
+void screen();
+void dlscreen();
+
+// SCREEN DESIGNING MODULE STARTS.
+void progressbar()
+{
+	clrscr();
+	dlscreen();
+
+	/* DRAW PROGRESSBAR */
+	// PERCENT : 0%-20%   -->  MESSAGE : LOADING ADDRESS BOOK ++ ...
+	// PERCENT : 20%-40%  -->  MESSAGE : LOADING DATABASE ...
+	// PERCENT : 40%-60%  -->  MESSAGE : CONNECTING MODULES ...
+	// PERCENT : 60%-80%  -->  MESSAGE : CONNECTING ESTABLISHED ...
+	// PERCENT : 80%-100% -->  MESSAGE : DONE ...
+	setcolor(7);
+	gotoxy(8,3);
+	cout << "Welcome To Address Book ++";
+	gotoxy(66,3);
+	cout << "V1.0.0.0";
+	gotoxy(80/4,5);
+	cout << "G L O B A L C O D E S - S O F T W A R E S";
+	line(80,80,540,80);
+	gotoxy(80/4,7);
+	cout << "  w w w . g l o b a l c o d e s . n e t ";
+	line(50,50,590,50);
+	rectangle(600,300,30,315);
+
+	delay(500);
+	gotoxy(6,18);
+	cout << "LOADING: 0%";
+	gotoxy(33,12);
+	cout << "ADDRESS BOOK ++";
+	bar3d(50,300,30,315,0,0);
+	delay(1000);
+
+	gotoxy(6,18);
+	cout << "LOADING: 10%";
+	gotoxy(31,12);
+	cout << "CONNECTING DATABASE";
+	bar3d(50,300,30,315,0,0);
+	delay(500);
+
+	gotoxy(6,18);
+	cout << "LOADING: 20%";
+	gotoxy(31,12);
+	cout << "CONNECTING DATABASE .";
+	bar3d(120,300,30,315,0,0);
+	delay(2000);
+
+	gotoxy(6,18);
+	cout << "LOADING: 30%";
+	gotoxy(31,12);
+	cout << "CONNECTING DATABASE ...";
+	bar3d(190,300,30,315,0,0);
+	delay(500);
+
+	gotoxy(6,18);
+	cout << "LOADING: 40%";
+	gotoxy(31,12);
+	cout << "CONNECTING MODULES ";
+	bar3d(250,300,30,315,0,0);
+	delay(500);
+
+	gotoxy(6,18);
+	cout << "LOADING: 50%";
+	gotoxy(31,12);
+	cout << "CONNECTING MODULES .";
+	bar3d(310,300,30,315,0,0);
+	delay(2000);
+
+	gotoxy(6,18);
+	cout << "LOADING: 60%";
+	gotoxy(31,12);
+	cout << "CONNECTING MODULES ...";
+	bar3d(370,300,30,315,0,0);
+	delay(500);
+
+	gotoxy(6,18);
+	cout << "LOADING: 70%";
+	gotoxy(31,12);
+	cout << "CONNECTION ESTABLISHED .";
+	bar3d(430,300,30,315,0,0);
+	delay(500);
+
+	gotoxy(6,18);
+	cout << "LOADING: 80%";
+	gotoxy(29,12);
+	cout << "CONNECTION ESTABLISHED ...";
+	bar3d(500,300,30,315,0,0);
+	delay(2000);
+
+	gotoxy(6,18);
+	cout << "LOADING: 90%";
+	gotoxy(28,12);
+	cout << "UPDATING SECURITY SETTINGS";
+	bar3d(570,300,30,315,0,0);
+	delay(3000);
+
+	gotoxy(6,18);
+	cout << "LOADING: 100%";
+	gotoxy(28,12);
+	cout << "WELCOME TO ADDRESS BOOK ++ ";
+	bar3d(600,300,30,315,0,0);
+	delay(500);
+
+	/*clear the screen*/
+	cleardevice();
+	closegraph();
+}
+
+void screen()
+{
+	/* initialize graphics and local variables */
+	initgraph(&gdriver, &gmode, "D:\\tc\\bgi");
+	/* read result of initialization */
+	errorcode = graphresult();
+	if (errorcode != grOk)  /* an error occurred */
+	{
+		cout << "Graphics error:" << endl << grapherrormsg(errorcode);
+		cout << "Press any key to halt:";
+		getch();
+		exit(1); /* terminate with an error code */
+	}
+
+	left = getmaxx() / 2 - 310;
+	top = getmaxy() / 2 - 220;
+	right = getmaxx() / 2 + 310;
+	bottom = getmaxy() / 2 + 180;
+	/* draw a inner rectangle */
+	setcolor(14);
+	rectangle(left,top,right,bottom);
+}
+
+void dlscreen()
+{
+	/* initialize graphics and local variables */
+	initgraph(&gdriver, &gmode, "c:\\tc\\bgi");
+	/* read result of initialization */
+	errorcode = graphresult();
+	if (errorcode != grOk)  /* an error occurred */
+	{
+		cout << "Graphics error:"<< endl << grapherrormsg(errorcode);
+		cout << "Press any key to halt:";
+		getch();
+		exit(1); /* terminate with an error code */
+	}
+
+	left = getmaxx() / 2 - 310;
+	top = getmaxy() / 2 - 220;
+	right = getmaxx() / 2 + 310;
+	bottom = getmaxy() / 2 + 180;
+	/* draw a inner rectangle */
+	setcolor(14);
+	rectangle(left,top,right,bottom);
+
+	left = getmaxx() / 2 - 314;
+	top = getmaxy() / 2 - 224;
+	right = getmaxx() / 2 + 314;
+	bottom = getmaxy() / 2 + 185;
+	/* draw a outer rectangle  */
+	rectangle(left,top,right,bottom);
+}
